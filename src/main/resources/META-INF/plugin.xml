@@ -1,0 +1,40 @@
+<idea-plugin>
+    <id>com.juanlondono.androidXMLExport</id>
+    <name>Android Strings.xml To CSV Converter</name>
+    <vendor email="juanestebanlt@gmail.com" url="https://github.com/juanes30">Juan Esteban Londoño Tabares</vendor>
+
+    <description><![CDATA[
+      <h1>Android XML to CSV converter.</h1><br>
+      <p>Allows you to translate strings.xml, arrays.xml, plurals.xml into different languages in spreadsheet form, and vice versa.</p>
+      <p><em>NOTE<em></p>
+      <p>You can access the plugin from the "Tools" menu at the IDE toolbar</p>
+      </br>
+      <p>Changelog</p>
+      <p></p>
+      <p>2.0.1</p>
+      <p>Support more rows of data</p>
+      <p>Bug fixes and improves stability</p>
+      <a href ="https://github.com/juanes30/android-xml-strings-exports">GitHub</a>
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add Ask question action to Tools Menu -->
+        <action id="Android.GenerateCvsFromXml.ToolsMenu"
+                class="com.juanlondono.androidxmlexport.XmlToCvs"
+                text="Generate Cvs From Xml Strings"
+                icon="/sync.png"
+                description="Ask a Question on Stack Overflow">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>

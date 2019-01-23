@@ -1,0 +1,2 @@
+rootProject.name = 'androidXMLExport'
+include 'xml-cvs-parser'
