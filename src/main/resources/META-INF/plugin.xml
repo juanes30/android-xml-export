@@ -5,13 +5,13 @@
 
     <description><![CDATA[
       <h1>Android XML to CSV Export</h1><br>
-      <p>Allows you to translate strings.xml, arrays.xml, plurals.xml into different languages in spreadsheet form, and vice versa.</p>
+      <p>Allows you to translate strings.xml into different languages in spreadsheet form, and vice versa.</p>
       <p><em>NOTE<em></p>
       <p>You can access the plugin from the "Tools" menu at the IDE toolbar</p>
       </br>
       <p>Changelog</p>
       <p></p>
-      <p>1.0-SNAPSHOT</p>
+      <p>1.1-SNAPSHOT</p>
       <p>Bug fixes and improves stability</p>
       <a href ="https://github.com/juanes30/android-xml-strings-exports">GitHub</a>
     ]]></description>
