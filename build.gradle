@@ -33,12 +33,7 @@ patchPluginXml {
       Add change notes here.<br>
       <em>most HTML tags may be used</em>"""
 }
-publishPlugin {
-    token intellijPublishToken
-    username intellijPublishUsername
-    password intellijPublishPassword
-    channels intellijPublishChannels.split(',')
-}
+
 
 
 apply plugin: 'org.jetbrains.intellij'
