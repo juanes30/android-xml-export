@@ -10,7 +10,7 @@ additional use the project [Kotlin-XML-CSV-Parser](https://github.com/LiewJunTun
 #### It will convert strings.xml
 ![Image of CSV](https://github.com/pandawarrior91/Android-strings-xml-csv-converter/blob/master/strings.png)
 #### to CSV
-![Image of CSV](https://github.com/pandawarrior91/Android-strings-xml-csv-converter/blob/master/csv.png)
+![Image of CSV](https://github.com/juanes30/android-xml-export/blob/master/csv.png)
 #### and back!
 
 ## Why?
