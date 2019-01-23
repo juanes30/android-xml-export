@@ -31,8 +31,6 @@ public class GUI extends DialogWrapper {
         lblResult.setText("");
 
         txtSourceFolder.setText(initialFolder);
-        txtSourceFolder.setText("/Users/juanlondonotabares/Proyectos/StudioProjects/Soldi/app/src/main/res");
-        txtDestinationFolder.setText("/Users/juanlondonotabares/Downloads");
         btnSourceFolder.addActionListener(e -> {
             String folder = chooseFolder();
             if (folder != null)
