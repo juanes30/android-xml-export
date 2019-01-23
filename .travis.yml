@@ -1,0 +1,8 @@
+language: java
+notifications:
+  email:
+    - juanestebanlt@gmail.com
+jdk:
+  - oraclejdk8
+git:
+  submodules: false
