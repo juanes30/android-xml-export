@@ -7,7 +7,7 @@ try to make a fork and work on it but spend a lot of time trying to compile and 
 additional use the project [Kotlin-XML-CSV-Parser](https://github.com/LiewJunTung/Kotlin-XML-CSV-Parser) this if you reuse all the code
 
 ## What does it do?
-#### It will convert strings.xml, arrays.xml, plurals.xml
+#### It will convert strings.xml
 ![Image of CSV](https://github.com/pandawarrior91/Android-strings-xml-csv-converter/blob/master/strings.png)
 #### to CSV
 ![Image of CSV](https://github.com/pandawarrior91/Android-strings-xml-csv-converter/blob/master/csv.png)
