@@ -3,12 +3,17 @@ package com.juanlondono.androidxmlexport;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.ui.JBColor;
+import com.intellij.util.ImageLoader;
 import com.juanlondono.app.TranslationType;
 import com.juanlondono.app.XMLToCSVKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
 
 
 public class GUI extends DialogWrapper {
@@ -22,12 +27,12 @@ public class GUI extends DialogWrapper {
     private JButton btnDestinationFolder;
     private JButton btnAceptar;
     private JLabel lblResult;
-
+    private JLabel imageLabel;
 
     GUI(Project project, String initialFolder) {
         super(project, true);
         this.setTitle("Android Generator Cvs From Xml");
-        this.setResizable(true);
+        this.setResizable(false);
         lblResult.setText("");
 
         txtSourceFolder.setText(initialFolder);
@@ -47,9 +52,17 @@ public class GUI extends DialogWrapper {
             String destinationFolder = txtDestinationFolder.getText();
             writeCSV(sourceFolder, destinationFolder);
         });
-
         this.setOKActionEnabled(false);
         this.init();
+
+        try {
+            Image image = new ImageIcon(getClass().getResource("/loading.gif")).getImage().getScaledInstance(250, 20, Image.SCALE_DEFAULT);
+            ImageIcon icon = new ImageIcon(image);
+            imageLabel.setIcon(icon);
+            imageLabel.setVisible(false);
+        } catch (Exception ex) {
+            // todo show error
+        }
     }
 
     private String chooseFolder() {
@@ -64,20 +77,41 @@ public class GUI extends DialogWrapper {
     }
 
     private void writeCSV(final String sourceFolder, final String destinationFolder) throws ArrayIndexOutOfBoundsException {
-        SwingUtilities.invokeLater(() -> {
-            try {
-                XMLToCSVKt.processXMLToCSV(sourceFolder, destinationFolder, TranslationType.NORMAL);
-                lblResult.setText("");
-                lblResult.setText("SUCCESS!");
-                lblResult.setForeground(JBColor.GREEN);
-            } catch (Exception e) {
-                lblResult.setText("Error Message: " + e.getMessage());
-                lblResult.setForeground(JBColor.RED);
+        lblResult.setText("");
+        imageLabel.setVisible(true);
+
+        SwingWorker worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                try {
+                    XMLToCSVKt.processXMLToCSV(sourceFolder, destinationFolder, TranslationType.NORMAL);
+                    Thread.sleep(1000);
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            imageLabel.setVisible(false);
+                            lblResult.setText("");
+                            lblResult.setText("SUCCESS!");
+                            lblResult.setForeground(JBColor.GREEN);
+                        }
+                    });
+                } catch (Exception e) {
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            imageLabel.setVisible(false);
+                            lblResult.setText("Error Message: " + e.getMessage());
+                            lblResult.setForeground(JBColor.RED);
+                        }
+                    });
+                }
+                return null;
             }
 
-        });
-
+        };
+        worker.execute();
     }
+
 
     @Nullable
     @Override

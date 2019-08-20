@@ -9,13 +9,11 @@
       <p><em>NOTE<em></p>
       <p>You can access the plugin from the "Tools" menu at the IDE toolbar</p>
       </br>
-      <p>Changelog</p>
-      <p></p>
-      <p>1.1-SNAPSHOT</p>
-      <p>Bug fixes and improves stability</p>
       <a href ="https://github.com/juanes30/android-xml-strings-exports">GitHub</a>
     ]]></description>
 
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <!-- <idea-version since-build="192.0"/>-->
     <depends>com.intellij.modules.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
@@ -28,7 +26,7 @@
                 class="com.juanlondono.androidxmlexport.XmlToCvs"
                 text="Generate Cvs From Xml Strings"
                 icon="/sync.png"
-                description="Generate Cvs From Xml Strings">
+                description="Export your strings to csv">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
         </action>
     </actions>

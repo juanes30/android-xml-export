@@ -15,6 +15,7 @@ import javax.xml.bind.JAXBContext
 
 /**
  * Created by jtlie on 3/31/2017.
+ * Modified by juanes30 08/20/2019
  */
 
 enum class TranslationType {
@@ -73,17 +74,13 @@ fun stringXmlToDatabase(readPath: String, headers: ArrayList<String>) {
         statement?.executeUpdate("create table $tableName (name string, translatable string, $createHeaderString)")
         for (header in headers) {
             var newHeader = header
-            if(header == "values_"){
+            if (header == "values_") {
                 newHeader = header.replace("_", "")
             }
             val file = File("$readPath${File.separator}$newHeader${File.separator}strings.xml")
             var aResources: AStringResource
             if (!file.exists()) {
-                aResources = AStringResource()
-                aResources.aStringList = ArrayList()
-                val jaxbContext = JAXBContext.newInstance(AStringResource::class.java)
-                val jaxbUnmarchaller = jaxbContext.createUnmarshaller()
-                aResources = jaxbUnmarchaller.unmarshal(file) as AStringResource
+                continue
             } else {
                 val jaxbContext = JAXBContext.newInstance(AStringResource::class.java)
                 val jaxbUnmarchaller = jaxbContext.createUnmarshaller()
@@ -93,7 +90,7 @@ fun stringXmlToDatabase(readPath: String, headers: ArrayList<String>) {
             if (aResources.aStringList == null) {
                 throw Exception("Parsing Error")
             }
-            var aStringList: List<AString> = aResources.aStringList!!
+            val aStringList: List<AString> = aResources.aStringList!!
             for (aString in aStringList) {
                 val stmt =
                     connection.prepareStatement("UPDATE `$tableName` SET ${header.replace('-', '_')} = ? WHERE name= ?")
