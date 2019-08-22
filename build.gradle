@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'com.juanlondono'
-version '1.7'
+version '1.7.2'
 
 sourceCompatibility = 1.8
 
@@ -21,7 +21,7 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version 'LATEST-EAP-SNAPSHOT'
+    version '2019.1'
     plugins = ['java']
 }
 compileKotlin {
@@ -32,8 +32,7 @@ compileTestKotlin {
 }
 patchPluginXml {
     changeNotes """
-      * se agrega imagen de cargando.<br>
-      * Control si el archivo strings.xml no existe.<br>
+      * fix compatibility<br>
       """
 }
 publishPlugin {
