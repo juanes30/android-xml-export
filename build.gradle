@@ -1,11 +1,11 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.intellij' version '0.4.10'
+    id 'org.jetbrains.intellij' version '0.4.14'
     id 'org.jetbrains.kotlin.jvm' version '1.3.41'
 }
 
 group 'com.juanlondono'
-version '1.7.2'
+version '1.7.4'
 
 sourceCompatibility = 1.8
 
@@ -22,6 +22,7 @@ dependencies {
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
     version '2019.2'
+    updateSinceUntilBuild false
     plugins = ['java']
 }
 compileKotlin {
